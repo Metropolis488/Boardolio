@@ -5,7 +5,7 @@ The Halo of Thought
 Jay Hardacker, Matthew Steiner, and Angela Tooley
 
 ### Project Title:
-Bordolio
+Boardolio
 
 ### Project Descriptions:
 Idea: Some type of Financial dashboard 
