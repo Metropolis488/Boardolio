@@ -1,1 +1,33 @@
-this is a test
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Boardolio</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-inline md-form mr-auto mb-4">
+        <input id="input" class="form-control mr-sm-2" type="text" placeholder="Search for Stock" aria-label="Search">
+        <button id="submit" class="btn btn-primary" type="submit"><i class='fas fa-search'></i></button>
+      </div>
+      <section>
+        <div id="search-results" class="btn-group-vertical container-fluid ">
+
+        </div>
+      </section>
+    <canvas id="myChart" ></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
+  <script src="./boardolio.js"></script>
+</body>
+
+</html>
