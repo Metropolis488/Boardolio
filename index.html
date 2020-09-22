@@ -2,32 +2,114 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Boardolio</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel="stylesheet" href="style.css" />
+    <title>Boardolio</title>
 </head>
 
 <body>
-  <div class="container">
-    <div class="form-inline md-form mr-auto mb-4">
-        <input id="input" class="form-control mr-sm-2" type="text" placeholder="Search for Stock" aria-label="Search">
-        <button id="submit" class="btn btn-primary" type="submit"><i class='fas fa-search'></i></button>
-      </div>
-      <section>
-        <div id="search-results" class="btn-group-vertical container-fluid ">
 
+    <!-- Nav -->
+    <div id="top-div" class="w3-container w3-theme-d4 navbar-nav">
+        <a id="portfolio-link" class="nav-item" href="#portfolio">MY PORTFOLIO</a>
+    </div>
+
+    <!-- Header -->
+    <section>
+        <header id="header" class="w3-container">
+            <img class="logo" src="https://i.postimg.cc/nXZRD3XB/boardolio-logo.jpg" alt="boardolio-logo">
+            <h4 id="head-text" class="w3-text-theme">a convenient dashboard to track your stock portfolio</h4>
+        </header>
+    </section>
+
+    <!-- Hero & Search Area -->
+    <section>
+        <div class="hero-image">
+            <h2 id="equities-text" class="hero-text w3-text-theme-l5">THE EASY WAY TO FOLLOW EQUITIES</h2>
+            <form id="submit" class="form-inline w3-container w3-cell-row">
+                <div id="search-area" class="w3-display-bottommiddle">
+                    <input id="input" type="text" placeholder="Search for Stock" aria-label="Search">
+                    <a href="#search-results"><button id="sub-but" class="w3-button w3-theme-d3 w3-round"
+                            type="submit"><i class="fas fa-search"></i></button>
+                    </a>
+                </div>
+            </form>
         </div>
-      </section>
-    <canvas id="myChart" ></canvas>
-  </div>
+    </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
-  <script src="./boardolio.js"></script>
+    <!-- Search Results Section -->
+    <section>
+        <div id="search-results" class="w3-padding w3-blue-grey w3-bar">
+            <h5>SELECT ONE:</h5>
+            <button id="result" class="w3-button w3-theme-l3 w3-round w3-large w3-border-white" type="submit">EXAMPLE
+                STOCK</button>
+            <button id="result" class="w3-button w3-theme-l3 w3-round w3-large w3-border-white" type="submit">EXAMPLE
+                STOCK</button>
+            <button id="result" class="w3-button w3-theme-l3 w3-round w3-large w3-border-white" type="submit">EXAMPLE
+                STOCK</button>
+        </div>
+    </section>
+
+    <!-- Historical Chart Section -->
+    <section>
+        <div style="width: 75%;">
+            <canvas id="myChart" height="400" width="800">
+            </canvas>
+        </div>
+    </section>
+
+    <!-- My Portfolio Section -->
+    <section>
+        <div id="portfolio" class="w3-padding w3-xlarge w3-blue-grey">
+            <div class="row">
+                <div class="column">
+                    <div class="card w3-button" onclick="document.getElementById('modal').style.display='block'"
+                        class="w3-button">
+                        <div class="w3-panel w3-padding w3-card w3-grey">
+                            <p>STOCK XX</p>
+                            <p>stock information here</p>
+                            <i class="fa fa-trash"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zoom In Modal -->
+    <div id="modal" class="w3-modal w3-card">
+        <div class="w3-modal-content w3-animate-zoom">
+            <header class="w3-container w3-theme-l3">
+                <h1 id="zoom-header">STOCK XX</h1>
+            </header>
+            <div class="w3-container">
+                <span onclick="document.getElementById('modal').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <p id="close-date">Close Date: </p>
+                <p id="price">Price: </p>
+                <textarea id="w3review" name="w3review" placeholder="My Notes"></textarea>
+                <footer id="zoom-footer" class="w3-container"> 
+                </footer>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="w3-theme-d4">
+        <p class="copyright">© 2020 The Halo of Thought</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="my-js.js"></script>
 </body>
 
 </html>
