@@ -18,7 +18,8 @@ function searchStock (event) {
     
     $.ajax({
         url: searchURL,
-        method: "GET"
+        method: "GET",
+        "Access-Control-Allow-Origin": "*"
     }).then(function(response) {
         resultsArea.empty();
         $(resultsArea).append(`<h5>Search Results for ${input}:</h5>`)
@@ -42,6 +43,7 @@ function addStock () {
     $.ajax({
         url: getStockPrice,
         method: "GET"
+        "Access-Control-Allow-Origin": "*"
     }).then(function(response) {
         console.log(response)
         var rawPrice = parseFloat(response[0].adjClose).toFixed(2);
@@ -79,6 +81,7 @@ function buildChart () {
 $.ajax({
     url: uSix,
     method: "GET"
+    "Access-Control-Allow-Origin": "*"
 }).then(function(response) {
     for (var i = 0; i < response.dataset.data.length; i++) {
         chartLabels.unshift(response.dataset.data[i][0]);
@@ -86,7 +89,7 @@ $.ajax({
     }
     buildChart();
 });
-            
+
 function getStoredStocks() {
     console.log(stockPortfolio);
     for (var i = 0; i < stockPortfolio.length; i++) {
@@ -97,11 +100,12 @@ function getStoredStocks() {
 }
 
 function stockHistory(stock, companyName) {
-        var getStockPrice = "https://api.tiingo.com/tiingo/daily/" + stock + "/prices?format=json&token=5172699a46c83fd85068e9464c21ab8bff140042";
-        
-        $.ajax({
-            url: getStockPrice,
-            method: "GET"
+    var getStockPrice = "https://api.tiingo.com/tiingo/daily/" + stock + "/prices?format=json&token=5172699a46c83fd85068e9464c21ab8bff140042";
+    
+    $.ajax({
+        url: getStockPrice,
+        method: "GET"
+        "Access-Control-Allow-Origin": "*"
         }).then(function(response) {
             console.log(response);
             var closePrice = parseFloat(response[0].adjClose).toFixed(2);
