@@ -1,12 +1,12 @@
 var stockPortfolio = JSON.parse(localStorage.getItem("portfolio")) || [];
 var stockNotes = JSON.parse(localStorage.getItem("notes")) || [];
-var stocks = "https://api.tiingo.com/tiingo/daily/";
+var stocks = "http://api.tiingo.com/tiingo/daily/";
 var portfolioSection = $("#portfolio");
 var submit = $("#submit");
 var resultsArea = $("#search-results");
 var todayDate = moment().format("YYYY/MM/DD");
 var beginDate = moment().subtract(10, "years").format("YYYY/MM/DD");
-var uSix = "https://www.quandl.com/api/v3/datasets/FRED/CIVPART.json?api_key=Jcyk-GUH8y6JQHsTjovt&start_date=" + beginDate + "&end_date=" + todayDate;
+var uSix = "http://www.quandl.com/api/v3/datasets/FRED/CIVPART.json?api_key=Jcyk-GUH8y6JQHsTjovt&start_date=" + beginDate + "&end_date=" + todayDate;
 var chartLabels = [];
 var chartData = [];
 var ctx = $("#myChart");
@@ -14,7 +14,7 @@ var ctx = $("#myChart");
 function searchStock (event) {
     event.preventDefault()
     var input = $("#input").val()
-    var searchURL = "https://api.tiingo.com/tiingo/utilities/search?query=" + input + "&format=json&token=5172699a46c83fd85068e9464c21ab8bff140042"
+    var searchURL = "http://api.tiingo.com/tiingo/utilities/search?query=" + input + "&format=json&token=5172699a46c83fd85068e9464c21ab8bff140042"
     
     $.ajax({
         url: searchURL,
@@ -37,7 +37,7 @@ function searchStock (event) {
 function addStock () {
     var clickedStock = $(this).attr("data-name");
     var stockName = $(this).text();
-    var getStockPrice = "https://api.tiingo.com/tiingo/daily/" + clickedStock + "/prices?format=json&token=5172699a46c83fd85068e9464c21ab8bff140042"
+    var getStockPrice = "http://api.tiingo.com/tiingo/daily/" + clickedStock + "/prices?format=json&token=5172699a46c83fd85068e9464c21ab8bff140042"
     
     $.ajax({
         url: getStockPrice,
@@ -97,7 +97,7 @@ function getStoredStocks() {
 }
 
 function stockHistory(stock, companyName) {
-        var getStockPrice = "https://api.tiingo.com/tiingo/daily/" + stock + "/prices?format=json&token=5172699a46c83fd85068e9464c21ab8bff140042";
+        var getStockPrice = "http://api.tiingo.com/tiingo/daily/" + stock + "/prices?format=json&token=5172699a46c83fd85068e9464c21ab8bff140042";
         
         $.ajax({
             url: getStockPrice,
@@ -142,8 +142,17 @@ function deleteCard() {
     theOne.remove();    
 }
 
+// function noteModal() {
+//     // $("#modal").style.display="block";
+
+//     var cardTitle = $(this).text()
+//     console.log(cardTitle)
+
+
+// }
     
     getStoredStocks()
     $("#submit").on("submit", searchStock);
     $(document).on("click", ".result", addStock);
     $(document).on("click", ".fa", deleteCard);
+    // $(document).on("click", ".cardtitle", noteModal)
