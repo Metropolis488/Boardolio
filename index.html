@@ -33,12 +33,12 @@
         <div class="hero-image">
             <h2 id="equities-text" class="hero-text w3-text-theme-l5">THE EASY WAY TO FOLLOW EQUITIES</h2>
             <form id="submit" class="form-inline w3-container w3-cell-row">
-                <div id="search-area" class="w3-display-bottommiddle">
-                    <input id="input" type="text" placeholder="Search for Stock" aria-label="Search">
-                    <a href="#search-results"><button id="sub-but" class="w3-button w3-theme-d3 w3-round"
-                            type="submit"><i class="fas fa-search"></i></button>
-                    </a>
-                </div>
+              <div id="search-area" class="w3-display-bottommiddle">
+                <input id="input" type="text" placeholder="Search for Stocks" aria-label="Search">
+                <button id="sub-but" class="w3-button w3-theme-d3 w3-round" type="submit">
+                    <a class="fas fa-search"></a>
+                </button>
+              </div>
             </form>
         </div>
     </section>
@@ -46,44 +46,25 @@
     <!-- Search Results Section -->
     <section>
         <div id="search-results" class="w3-padding w3-blue-grey w3-bar">
-            <h5>SELECT ONE:</h5>
-            <button id="result" class="w3-button w3-theme-l3 w3-round w3-large w3-border-white" type="submit">EXAMPLE
-                STOCK</button>
-            <button id="result" class="w3-button w3-theme-l3 w3-round w3-large w3-border-white" type="submit">EXAMPLE
-                STOCK</button>
-            <button id="result" class="w3-button w3-theme-l3 w3-round w3-large w3-border-white" type="submit">EXAMPLE
-                STOCK</button>
+           
         </div>
     </section>
 
     <!-- Historical Chart Section -->
     <section>
-        <div style="width: 75%;">
-            <canvas id="myChart" height="400" width="800">
-            </canvas>
+        <div style="padding-left: 15%; padding-right: 15%;">
+            <canvas id="myChart" height="400" width="800"></canvas>
         </div>
     </section>
 
     <!-- My Portfolio Section -->
-    <section>
-        <div id="portfolio" class="w3-padding w3-xlarge w3-blue-grey">
-            <div class="row">
-                <div class="column">
-                    <div class="card w3-button" onclick="document.getElementById('modal').style.display='block'"
-                        class="w3-button">
-                        <div class="w3-panel w3-padding w3-card w3-grey">
-                            <p>STOCK XX</p>
-                            <p>stock information here</p>
-                            <i class="fa fa-trash"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="portfolio" class="w3-container w3-padding w3-xlarge w3-blue-grey">
+      <h3 id="todayDate"></h3>
+
     </section>
 
     <!-- Zoom In Modal -->
-    <div id="modal" class="w3-modal w3-card">
+    <!-- <div id="modal" class="w3-modal w3-card">
         <div class="w3-modal-content w3-animate-zoom">
             <header class="w3-container w3-theme-l3">
                 <h1 id="zoom-header">STOCK XX</h1>
@@ -98,7 +79,7 @@
                 </footer>
             </div>
         </div>
-    </div>
+    </div> -->
     
     <!-- Footer -->
     <footer class="w3-theme-d4">
@@ -109,7 +90,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="my-js.js"></script>
+    <script src="boardolio.js"></script>
 </body>
 
 </html>
