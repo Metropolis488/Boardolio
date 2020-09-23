@@ -42,7 +42,7 @@ function addStock () {
     
     $.ajax({
         url: getStockPrice,
-        method: "GET"
+        method: "GET",
         "Access-Control-Allow-Origin": "*"
     }).then(function(response) {
         console.log(response)
@@ -80,7 +80,7 @@ function buildChart () {
 
 $.ajax({
     url: uSix,
-    method: "GET"
+    method: "GET",
     "Access-Control-Allow-Origin": "*"
 }).then(function(response) {
     for (var i = 0; i < response.dataset.data.length; i++) {
@@ -104,7 +104,7 @@ function stockHistory(stock, companyName) {
     
     $.ajax({
         url: getStockPrice,
-        method: "GET"
+        method: "GET",
         "Access-Control-Allow-Origin": "*"
         }).then(function(response) {
             console.log(response);
