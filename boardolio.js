@@ -6,7 +6,7 @@ var submit = $("#submit");
 var resultsArea = $("#search-results");
 var todayDate = moment().format("YYYY/MM/DD");
 var beginDate = moment().subtract(10, "years").format("YYYY/MM/DD");
-var uSix = "https://www.quandl.com/api/v3/datasets/FRED/CIVPART.json?api_key=Jcyk-GUH8y6JQHsTjovt&start_date=" + beginDate + "&end_date=" + todayDate;
+var uSix = "https://api.codetabs.com/v1/proxy/?quest=https://www.quandl.com/api/v3/datasets/FRED/CIVPART.json?api_key=Jcyk-GUH8y6JQHsTjovt&start_date=" + beginDate + "&end_date=" + todayDate;
 var chartLabels = [];
 var chartData = [];
 var ctx = $("#myChart");
@@ -14,12 +14,12 @@ var ctx = $("#myChart");
 function searchStock (event) {
     event.preventDefault()
     var input = $("#input").val()
-    var searchURL = "https://api.tiingo.com/tiingo/utilities/search?query=" + input + "&format=json&token=5172699a46c83fd85068e9464c21ab8bff140042"
+    var searchURL = "https://api.codetabs.com/v1/proxy/?quest=https://api.tiingo.com/tiingo/utilities/search?query=" + input + "&format=json&token=5172699a46c83fd85068e9464c21ab8bff140042"
     
     $.ajax({
         url: searchURL,
         method: "GET",
-        "Access-Control-Allow-Origin": "*"
+        // dataType: "jsonp"
     }).then(function(response) {
         resultsArea.empty();
         $(resultsArea).append(`<h5>Search Results for ${input}:</h5>`)
@@ -38,12 +38,12 @@ function searchStock (event) {
 function addStock () {
     var clickedStock = $(this).attr("data-name");
     var stockName = $(this).text();
-    var getStockPrice = "https://api.tiingo.com/tiingo/daily/" + clickedStock + "/prices?format=json&token=5172699a46c83fd85068e9464c21ab8bff140042"
+    var getStockPrice = "https://api.codetabs.com/v1/proxy/?quest=https://api.tiingo.com/tiingo/daily/" + clickedStock + "/prices?format=json&token=5172699a46c83fd85068e9464c21ab8bff140042"
     
     $.ajax({
         url: getStockPrice,
         method: "GET",
-        "Access-Control-Allow-Origin": "*"
+        // dataType: "jsonp"
     }).then(function(response) {
         console.log(response)
         var rawPrice = parseFloat(response[0].adjClose).toFixed(2);
@@ -81,7 +81,7 @@ function buildChart () {
 $.ajax({
     url: uSix,
     method: "GET",
-    "Access-Control-Allow-Origin": "*"
+    // dataType: "jsonp"
 }).then(function(response) {
     for (var i = 0; i < response.dataset.data.length; i++) {
         chartLabels.unshift(response.dataset.data[i][0]);
@@ -100,12 +100,12 @@ function getStoredStocks() {
 }
 
 function stockHistory(stock, companyName) {
-    var getStockPrice = "https://api.tiingo.com/tiingo/daily/" + stock + "/prices?format=json&token=5172699a46c83fd85068e9464c21ab8bff140042";
+    var getStockPrice = "https://api.codetabs.com/v1/proxy/?quest=https://api.tiingo.com/tiingo/daily/" + stock + "/prices?format=json&token=5172699a46c83fd85068e9464c21ab8bff140042";
     
     $.ajax({
         url: getStockPrice,
         method: "GET",
-        "Access-Control-Allow-Origin": "*"
+        // dataType: "jsonp"
         }).then(function(response) {
             console.log(response);
             var closePrice = parseFloat(response[0].adjClose).toFixed(2);
